@@ -2,9 +2,9 @@
 set -eu  # Exit on error
 
 aishell1_dir=/youraishell1path/aishell1/wav
-aishell1_md_dir=/youraishell1path/aishell1/metadata
+aishell1_md_dir=/metadata/aishell1
 wham_dir=/yourwhampath/wham_noise
-wham_md_dir=/metadata/Wham_noise
+wham_md_dir=/metadata/wham_noise
 metadata_dir=/youraishellmixpath/aishellmix/metadata
 aishellmix_outdir=/youraishellmixpath/aishellmix
 
