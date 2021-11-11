@@ -5,6 +5,7 @@ Aishell1Mix is a mandarin version of speech separation dataset like WSJMix and L
 * Firstly download aishell1(http://www.openslr.org/33/) and uncompress the data_aishell&resource_aishell in your aishell1 path.
 * Then download WHAM noise(https://wham.whisper.ai/) and unzip WHAM! noise dataset in your wham path.
 * Lastly clone the repo, specify the correct path in [`generate_aishell1mix.sh`](./generate_aishell1mix.sh) and run it:
+
   ```
   git clone https://github.com/huangzj421/Aishell1Mix.git
   cd Aishell1Mix
