@@ -1,3 +1,4 @@
 # Aishell1Mix
-This is a mandarin version of speech separation dataset like WSJMix and LibriMix. The scripts are derived from https://github.com/JorisCos/LibriMix.
-You can check it for more details.
+Aishell1Mix is a mandarin version of speech separation dataset like WSJMix and LibriMix. It mixes 2 or 3 speaker wavs from open source mandarin speech corpus aishell1 and WHAM noise. The scripts are modified from https://github.com/JorisCos/LibriMix. Please reference it for more details.
+
+
