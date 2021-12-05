@@ -45,7 +45,7 @@ Wham &
 wait
 
 # If you wish to rerun this script in the future please comment this line out.
-# python scripts/augment_train_noise.py --wham_dir $wham_dir
+python scripts/augment_train_noise.py --wham_dir $wham_dir
 
 for n_src in 2 3; do
   metadata_outdir=$metadata_outdir/Aishell1"Mix"$n_src
