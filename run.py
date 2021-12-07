@@ -1,6 +1,6 @@
 import os
 import argparse
-import requests
+from urllib.request import urlretrieve
 import tarfile
 import zipfile
 import glob
@@ -45,12 +45,16 @@ def apply_fx(sound_path, speed):
     sf.write(f"""{sound_path.replace(
         '.wav',f"sp{str(speed).replace('.','')}" +'.wav')}""", s, rate)
 
+
+def reporthook(blocknum, blocksize, totalsize): 
+      print("\rdownloading: %5.1f%%"%(100.0*blocknum * blocksize/totalsize), end='')
+
 if not os.path.exists(aishell1_dir):
     print("Download Aishell1 into %s"%args.path)
-    r = requests.get('https://openslr.magicdatatech.com/resources/33/data_aishell.tgz', allow_redirects=True)
-    open(os.path.join(args.path, 'data_aishell.tgz'), 'wb').write(r.content)
-    r = requests.get('https://openslr.magicdatatech.com/resources/33/resource_aishell.tgz', allow_redirects=True)
-    open(os.path.join(args.path, 'resource_aishell.tgz'), 'wb').write(r.content)
+    urlretrieve("https://openslr.magicdatatech.com/resources/33/data_aishell.tgz",
+        os.path.join(args.path, "data_aishell.tgz"), reporthook=reporthook)
+    urlretrieve("https://openslr.magicdatatech.com/resources/33/resource_aishell.tgz",
+        os.path.join(args.path, "resource_aishell.tgz"), reporthook=reporthook)
     extracttar(os.path.join(args.path, 'data_aishell.tgz'))
     files = glob.glob(os.path.join(aishell1_dir, "wav/*.gz"))
     for f in files: extracttar(f)
@@ -58,8 +62,8 @@ if not os.path.exists(aishell1_dir):
 
 if not os.path.exists(wham_dir):
     print("Download Wham noise dataset into %s"%args.path)
-    r = requests.get('https://storage.googleapis.com/whisper-public/wham_noise.zip', allow_redirects=True)
-    open(os.path.join(args.path, 'wham_noise.tgz'), 'wb').write(r.content)
+    urlretrieve("https://storage.googleapis.com/whisper-public/wham_noise.zip",
+        os.path.join(args.path, "wham_noise.zip"), reporthook=reporthook)
     file = zipfile.ZipFile(os.path.join(args.path, 'wham_noise.zip'))
     file.extractall(path=args.path)
     os.remove(os.path.join(args.path, 'wham_noise.zip'))
