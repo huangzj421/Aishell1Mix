@@ -51,9 +51,9 @@ def reporthook(blocknum, blocksize, totalsize):
 
 if not os.path.exists(aishell1_dir):
     print("Download Aishell1 into %s"%args.path)
-    urlretrieve("https://openslr.magicdatatech.com/resources/33/data_aishell.tgz",
+    urlretrieve("https://us.openslr.org/resources/33/data_aishell.tgz",
         os.path.join(args.path, "data_aishell.tgz"), reporthook=reporthook)
-    urlretrieve("https://openslr.magicdatatech.com/resources/33/resource_aishell.tgz",
+    urlretrieve("https://us.openslr.org/resources/33/resource_aishell.tgz",
         os.path.join(args.path, "resource_aishell.tgz"), reporthook=reporthook)
     extracttar(os.path.join(args.path, 'data_aishell.tgz'))
     files = glob.glob(os.path.join(aishell1_dir, "wav/*.gz"))
