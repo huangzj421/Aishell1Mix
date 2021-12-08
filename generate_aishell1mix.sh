@@ -14,10 +14,10 @@ function Aishell1() {
 	if ! test -e $aishell1_dir; then
 		echo "Download Aishell1 into $storage_dir"
 		# If downloading stalls for more than 20s, relaunch from previous state.
-		wget -c --tries=0 --read-timeout=20 https://openslr.magicdatatech.com/resources/33/data_aishell.tgz -P $storage_dir 
-		# If slow, try https://www.openslr.org/resources/33/data_aishell.tgz
-                wget -c --tries=0 --read-timeout=20 https://openslr.magicdatatech.com/resources/33/resource_aishell.tgz -P $storage_dir 
-		# If slow, try  https://www.openslr.org/resources/33/resource_aishell.tgz
+		wget -c --tries=0 --read-timeout=20 https://us.openslr.org/resources/33/data_aishell.tgz -P $storage_dir 
+		# If slow, try to download at https://www.openslr.org/33 manually
+                wget -c --tries=0 --read-timeout=20 https://us.openslr.org/resources/33/resource_aishell.tgz -P $storage_dir 
+		# If slow, try to download at https://www.openslr.org/33 manually
 		tar -xzf $storage_dir/data_aishell.tgz -C $storage_dir
                 tar -xzf $storage_dir/resource_aishell.tgz -C $storage_dir
 		for gz in $aishell1_dir/*.tar.gz
