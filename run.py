@@ -92,22 +92,19 @@ else:
 
 from scripts.create_aishell1_metadata import create_aishell1_metadata
 aishell1_md_dir = os.path.join(aishell1_dir, 'metadata')
-if not os.path.exists(aishell1_md_dir):
-    os.makedirs(aishell1_md_dir, exist_ok=True)
-    create_aishell1_metadata(aishell1_dir, aishell1_md_dir)
+os.makedirs(aishell1_md_dir, exist_ok=True)
+create_aishell1_metadata(aishell1_dir, aishell1_md_dir)
 
 from scripts.create_wham_metadata import create_wham_noise_metadata
 wham_md_dir = os.path.join(wham_dir, 'meta')
-if not os.path.exists(wham_md_dir):
-    os.makedirs(wham_md_dir, exist_ok=True)
-    create_wham_noise_metadata(wham_dir, wham_md_dir)
+os.makedirs(wham_md_dir, exist_ok=True)
+create_wham_noise_metadata(wham_dir, wham_md_dir)
 
 n_spks = 2
 from scripts.create_aishell1mix_metadata import create_aishell1mix_metadata
 aishell1mix_md_outdir = os.path.join(aishell1mix_outdir,'metadata','Aishell1Mix%i'%n_spks)
-if not os.path.exists(aishell1mix_md_outdir):
-    os.makedirs(aishell1mix_md_outdir, exist_ok=True)
-    create_aishell1mix_metadata(os.path.join(aishell1_dir, "wav"), aishell1_md_dir, 
+os.makedirs(aishell1mix_md_outdir, exist_ok=True)
+create_aishell1mix_metadata(os.path.join(aishell1_dir, "wav"), aishell1_md_dir, 
                                 wham_dir, wham_md_dir, aishell1mix_md_outdir, n_spks)
 
 freqs=['8k', '16k']
@@ -115,6 +112,6 @@ modes=['max', 'min']
 types=['mix_clean', 'mix_both', 'mix_single']
 from scripts.create_aishell1mix_from_metadata import create_aishell1mix
 aishell1mix_outdir = os.path.join(aishell1mix_outdir,'Aishell1Mix%i'%n_spks)
-if not os.path.exists(aishell1mix_outdir):
-    create_aishell1mix(os.path.join(aishell1_dir, "wav"), wham_dir, aishell1mix_outdir, 
+os.makedirs(aishell1mix_outdir, exist_ok=True)
+create_aishell1mix(os.path.join(aishell1_dir, "wav"), wham_dir, aishell1mix_outdir, 
                         aishell1mix_md_outdir, freqs, n_spks, modes, types)
