@@ -8,7 +8,7 @@ aishell1mix_outdir=$storage_dir/aishell1mix
 
 aishell1_md_dir=metadata/aishell1
 wham_md_dir=metadata/wham_noise
-metadata_outdir=$storage_dir/aishell1mix/metadata
+aishell1mix_md_dir=metadata/aishell1mix
 
 function Aishell1() {
 	if ! test -e $aishell1_dir; then
@@ -48,17 +48,10 @@ wait
 python scripts/augment_train_noise.py --wham_dir $wham_dir
 
 for n_src in 2 3; do
-  metadata_outdir=$metadata_outdir/Aishell1"Mix"$n_src
-  python scripts/create_aishell1mix_metadata.py --aishell1_dir $aishell1_dir \
-    --aishell1_md_dir $aishell1_md_dir \
-    --wham_dir $wham_dir \
-    --wham_md_dir $wham_md_dir \
-    --metadata_outdir $metadata_outdir \
-    --n_src $n_src
-
+  metadata_dir=$aishell1mix_md_dir/Aishell1Mix$n_src
   python scripts/create_aishell1mix_from_metadata.py --aishell1_dir $aishell1_dir \
     --wham_dir $wham_dir \
-    --metadata_dir $metadata_outdir \
+    --metadata_dir $metadata_dir \
     --aishell1mix_outdir $aishell1mix_outdir \
     --n_src $n_src \
     --freqs 8k 16k \
