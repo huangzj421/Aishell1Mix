@@ -1,3 +1,6 @@
+## News
+Now you can train models of this dataset with speechbrain [here](https://github.com/speechbrain/speechbrain/tree/develop/recipes/Aishell1Mix/separation).
+
 ## Aishell1Mix
 Aishell1Mix is a mandarin version of speech separation dataset like WSJMix and LibriMix. It mixes 2 or 3 speaker sources from the open source mandarin speech corpus [Aishell1](http://www.openslr.org/33/) with the noise dataset [WHAM](https://wham.whisper.ai/). The scripts are modified from [LibriMix](https://github.com/JorisCos/LibriMix). Please refer to it for more details.
 
