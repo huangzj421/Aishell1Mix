@@ -43,5 +43,4 @@ Please, cite Aishell1Mix if you use it for your research or business.
   year={2025},
   organization={Springer}
 }
-}
 ```
